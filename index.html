@@ -41,8 +41,8 @@ input:focus,textarea:focus,select:focus{outline:2px solid var(--gold);border-col
 .mobile-overlay.open{opacity:1;pointer-events:all}
 
 /* CART ICON */
-.cart-icon{position:fixed;top:1.2rem;right:6rem;z-index:1001;cursor:pointer;display:flex;align-items:center;gap:0.3rem;color:var(--white);transition:color 0.3s}
-.nav.scrolled~.cart-icon,.cart-icon.scrolled{color:var(--ocean)}
+.cart-icon{position:relative;cursor:pointer;display:flex;align-items:center;gap:0.3rem;color:var(--white);transition:color 0.3s;margin-left:1rem}
+.nav.scrolled .cart-icon{color:var(--ocean)}
 .cart-icon svg{width:24px;height:24px;fill:currentColor}
 .cart-badge{background:var(--gold);color:var(--white);font-size:0.7rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-8px;right:-8px}
 .cart-badge:empty{display:none}
@@ -228,7 +228,6 @@ section{padding:6rem 2rem}
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
-  .cart-icon{right:5rem;top:1rem}
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .about-img img{height:350px}
   .pillars{grid-template-columns:1fr}
@@ -257,16 +256,16 @@ section{padding:6rem 2rem}
     <li><a href="#calendar">Calendar</a></li>
     <li><a href="#footer">Contact</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
-    <span></span><span></span><span></span>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="cart-icon" id="cartIcon" onclick="toggleCart()">
+      <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020.01 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      <span class="cart-badge" id="cartBadge"></span>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
-
-<!-- CART ICON -->
-<div class="cart-icon" id="cartIcon" onclick="toggleCart()">
-  <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020.01 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-  <span class="cart-badge" id="cartBadge"></span>
-</div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobile()"></div>
@@ -774,7 +773,6 @@ const cartIconEl = document.getElementById('cartIcon');
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY > 80;
   nav.classList.toggle('scrolled', scrolled);
-  cartIconEl.classList.toggle('scrolled', scrolled);
 });
 
 // ========== MOBILE MENU ==========
