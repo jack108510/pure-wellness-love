@@ -3,119 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Wellness Joy — Dr. Jasmine</title>
+<title>Pure Wellness Joy — Bringing Wellness Home</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--cream:#fdfbf7;--rose:#d4a0a0;--sage:#a3b18a;--gold:#c9a84c;--ocean:#2d4a3e;--rose-light:#e8c4c4;--gold-light:#e0d4a8;--ocean-light:#4a7a6a}
+:root{--cream:#fdfbf7;--rose:#c9a0a0;--sage:#a3b18a;--gold:#c9a84c;--ocean:#2d4a3e;--warm:#f5f0e8;--rose-light:#e8c4c4;--gold-light:#e0d4a8}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:#3a3a3a;background:var(--cream);overflow-x:hidden}
-h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;font-weight:600;color:var(--ocean)}
-a{color:var(--gold);text-decoration:none;transition:color .3s}
-a:hover{color:var(--ocean)}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,box-shadow .4s}
-nav.scrolled{background:rgba(253,251,247,.95);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.06)}
-nav .logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ocean);font-weight:700}
-nav .nav-links{display:flex;gap:2rem;list-style:none}
-nav .nav-links a{color:var(--ocean);font-size:.85rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;position:relative}
-nav .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s}
-nav .nav-links a:hover::after{width:100%}
-.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:400;color:var(--ocean)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(253,251,247,.95);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,0,0,.05)}
+nav .logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean);font-weight:600;letter-spacing:.5px}
+nav .links{display:flex;gap:2rem}
+nav .links a{color:var(--ocean);font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;opacity:.7;transition:opacity .3s}
+nav .links a:hover{opacity:1}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center}
 .hero-bg{position:absolute;inset:0;background:url('https://static.showit.co/1200/XO8_BHT6wpIK4HOWiClfZg/321008/514703304_10165632054490744_3391040824683094374_n.jpg') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(45,74,62,.55),rgba(253,251,247,.15) 50%,rgba(212,160,160,.35))}
-.hero-content{position:relative;text-align:center;padding:2rem;max-width:800px}
-.hero-content h1{font-size:clamp(3rem,8vw,6rem);color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.2);line-height:1;margin-bottom:1.5rem}
-.hero-content h1 span{display:block;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:300;font-family:'Inter',sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light);margin-top:.5rem}
-.hero-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.5rem);color:rgba(255,255,255,.95);line-height:1.6;margin-top:2rem}
-.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:float 3s ease-in-out infinite}
-.scroll-indicator span{display:block;width:24px;height:24px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg)}
-@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(12px)}}
-.section{padding:6rem 2rem}
-.section-alt{background:linear-gradient(180deg,var(--cream),#f5f0e8)}
-.container{max-width:1100px;margin:0 auto}
-.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-img{position:relative}
-.about-img img{width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.12)}
-.about-img::after{content:'';position:absolute;top:-20px;right:-20px;width:100%;height:100%;border:2px solid var(--gold);border-radius:8px;z-index:-1}
-.about-text h2{font-size:2.5rem;margin-bottom:1.5rem;line-height:1.2}
-.about-text .subtitle{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.15rem;margin-bottom:1.5rem}
-.about-text p{line-height:1.8;margin-bottom:1rem;font-size:1rem;color:#555}
-.mrs-maui{display:inline-block;margin-top:1rem;padding:.6rem 1.2rem;background:linear-gradient(135deg,var(--gold-light),var(--rose-light));border-radius:30px;font-family:'Playfair Display',serif;font-size:.9rem;color:var(--ocean);font-weight:600}
-.philosophy-section{position:relative;background:url('https://static.showit.co/800/zO85CWRUPm5b8e-xLufKug/321008/mysticbella_beautiful_hawaii_jasmine_flowers_just_past_sunset_421bd657-2b0a-4123-bab8-9973b481765e_3.png') center/cover no-repeat fixed}
-.philosophy-overlay{background:rgba(45,74,62,.88);padding:6rem 2rem}
-.philosophy-text{max-width:800px;margin:0 auto;text-align:center;color:#fff}
-.philosophy-text h2{font-size:2.8rem;color:#fff;margin-bottom:1rem}
-.philosophy-text .tagline{font-size:1.2rem;color:var(--gold-light);font-style:italic;font-family:'Playfair Display',serif;margin-bottom:2rem}
-.philosophy-text p{font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,.85);margin-bottom:1.5rem}
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
-.pillar{padding:2rem;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.05)}
-.pillar h3{font-size:1.8rem;color:var(--gold-light);margin-bottom:.5rem}
-.pillar .meaning{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.7);margin-bottom:1rem}
-.pillar p{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.7}
-.book-section{position:relative;background:url('https://static.showit.co/800/fRyRSIEZ0Jx9g24YN_oIjA/321008/mysticbella_beautiful_hawaii_sunrise_over_the_sea_nikon_85mm_c4f561bf-0da9-4fe3-93ee-774000328b46_0.png') center/cover no-repeat}
-.book-overlay{background:linear-gradient(135deg,rgba(253,251,247,.92),rgba(212,160,160,.2));padding:6rem 2rem}
-.book-content{max-width:900px;margin:0 auto;text-align:center}
-.book-content h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:.5rem}
-.book-content .book-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--gold);margin-bottom:2rem}
-.book-content p{line-height:1.8;color:#555;max-width:650px;margin:0 auto 2rem}
-.book-excerpt{background:rgba(255,255,255,.7);border-left:4px solid var(--gold);padding:2rem;text-align:left;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;line-height:1.8;color:var(--ocean);border-radius:0 8px 8px 0;margin:2rem auto;max-width:650px}
-.coming-soon{display:inline-block;padding:.8rem 2.5rem;background:var(--ocean);color:#fff;border-radius:30px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;margin-top:1rem;transition:background .3s,transform .3s;cursor:pointer}
-.coming-soon:hover{background:var(--gold);transform:translateY(-2px)}
-.image-strip{position:relative;overflow:hidden;height:40vh;min-height:300px}
-.image-strip img{width:100%;height:100%;object-fit:cover}
-.image-strip .overlay-text{position:absolute;inset:0;display:flex;align-items:center;padding:3rem}
-.store-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;margin-top:3rem}
-.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.06);transition:transform .4s,box-shadow .4s}
-.product-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
-.product-img{height:220px;overflow:hidden}
-.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.product-card:hover .product-img img{transform:scale(1.05)}
-.product-body{padding:1.8rem}
-.product-body h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--ocean)}
-.product-body p{font-size:.9rem;line-height:1.7;color:#666;margin-bottom:1rem}
-.product-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);font-weight:600}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
-.service-card{padding:2.5rem;background:#fff;border-radius:12px;border:1px solid rgba(163,177,138,.2);transition:border-color .3s,transform .3s}
-.service-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.service-card h3{font-size:1.3rem;margin-bottom:.8rem}
-.service-card p{font-size:.95rem;line-height:1.7;color:#666}
-.service-icon{font-size:2rem;margin-bottom:1rem}
-.retreats{position:relative;background:url('https://static.showit.co/800/rSex-xFxuxhO3zet5FKLzw/321008/mysticbella_family_joining_hands_walking_together_on_the_maui_0650bc4c-cfbc-4c2d-9c36-23c8347c932b_2.png') center/cover no-repeat fixed}
-.retreats-overlay{background:rgba(253,251,247,.93);padding:6rem 2rem}
-.retreat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1000px;margin:3rem auto 0}
-.retreat-card{text-align:center;padding:3rem 2rem;background:rgba(255,255,255,.8);border-radius:12px;border:1px solid rgba(201,168,76,.2);transition:transform .3s}
-.retreat-card:hover{transform:translateY(-6px)}
-.retreat-card h3{font-size:1.4rem;margin-bottom:.5rem}
-.retreat-card .price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);margin-bottom:1rem}
-.retreat-card p{font-size:.9rem;line-height:1.7;color:#666;margin-bottom:1.5rem}
-.apply-btn{display:inline-block;padding:.7rem 2rem;background:var(--ocean);color:#fff;border-radius:30px;font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:background .3s;cursor:pointer}
-.apply-btn:hover{background:var(--gold)}
-.calendar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem}
-.season{padding:2.5rem 2rem;border-radius:12px;text-align:center;transition:transform .3s}
-.season:hover{transform:scale(1.03)}
-.season.spring{background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border:1px solid var(--sage)}
-.season.summer{background:linear-gradient(135deg,#fff8e1,#fff3e0);border:1px solid var(--gold)}
-.season.autumn{background:linear-gradient(135deg,#fbe9e7,#fff3e0);border:1px solid var(--rose)}
-.season.winter{background:linear-gradient(135deg,#e3f2fd,#e8eaf6);border:1px solid var(--ocean-light)}
-.season h3{font-size:1.5rem;margin-bottom:.5rem}
-.season p{font-size:.9rem;color:#666;line-height:1.6}
-footer{background:var(--ocean);color:rgba(255,255,255,.85);padding:4rem 2rem 2rem}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;max-width:1100px;margin:0 auto}
-.footer-col h4{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:1rem}
-.footer-col p,.footer-col a{font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.7);display:block}
-.footer-col a:hover{color:var(--gold-light)}
-.footer-bottom{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;color:rgba(255,255,255,.5)}
-.section-header{text-align:center;margin-bottom:3rem}
-.section-header h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:.5rem}
-.section-header p{font-size:1.05rem;color:#777;max-width:600px;margin:0 auto}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(45,74,62,.4),rgba(253,251,247,.6) 80%,var(--cream))}
+.hero-content{position:relative;text-align:center;max-width:700px;padding:2rem}
+.hero-content h1{font-size:clamp(3rem,7vw,5rem);color:#fff;line-height:1.1;margin-bottom:.5rem;text-shadow:0 2px 20px rgba(0,0,0,.15)}
+.hero-content .tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:rgba(255,255,255,.9)}
+.hero-content .sub{font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-top:1.5rem}
+
+/* SECTIONS */
+.section{padding:5rem 2rem}
+.container{max-width:1000px;margin:0 auto}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center}
+.about-img img{width:100%;border-radius:6px;box-shadow:0 15px 50px rgba(0,0,0,.08)}
+.about-text h2{font-size:2rem;margin-bottom:1rem;line-height:1.2}
+.about-text .role{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1rem;margin-bottom:1.5rem}
+.about-text p{line-height:1.8;margin-bottom:.8rem;font-size:.95rem;color:#555}
+.badge{display:inline-block;margin-top:.5rem;padding:.5rem 1rem;background:var(--warm);border-radius:20px;font-size:.85rem;color:var(--ocean);font-weight:500}
+
+/* PHILOSOPHY */
+.philosophy{position:relative;overflow:hidden}
+.philosophy-bg{position:absolute;inset:0;background:url('https://static.showit.co/800/zO85CWRUPm5b8e-xLufKug/321008/mysticbella_beautiful_hawaii_jasmine_flowers_just_past_sunset_421bd657-2b0a-4123-bab8-9973b481765e_3.png') center/cover no-repeat}
+.philosophy-inner{position:relative;background:rgba(45,74,62,.88);padding:5rem 2rem}
+.philosophy-content{max-width:750px;margin:0 auto;text-align:center;color:#fff}
+.philosophy-content h2{color:#fff;font-size:2.2rem;margin-bottom:1rem}
+.philosophy-content>p{color:rgba(255,255,255,.85);line-height:1.8;margin-bottom:2.5rem;font-size:1rem}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;text-align:left}
+.pillar{padding:2rem;border:1px solid rgba(255,255,255,.12);border-radius:8px}
+.pillar h3{color:var(--gold-light);font-size:1.4rem;margin-bottom:.3rem}
+.pillar .label{font-style:italic;color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:.8rem}
+.pillar p{color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.7}
+
+/* BOOK */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.book-text h2{font-size:2.2rem;margin-bottom:.3rem}
+.book-text .book-tag{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.15rem;margin-bottom:1.5rem}
+.book-text p{line-height:1.8;color:#555;font-size:.95rem;margin-bottom:1rem}
+.book-excerpt{border-left:3px solid var(--gold);padding:1.2rem 1.5rem;margin:1.5rem 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;line-height:1.8;color:var(--ocean)}
+.book-img img{width:100%;border-radius:6px;box-shadow:0 15px 50px rgba(0,0,0,.08)}
+
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.product{padding:2.5rem;background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s}
+.product:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06)}
+.product h3{font-size:1.15rem;margin-bottom:.3rem}
+.product .composition{font-size:.8rem;color:var(--gold);font-weight:500;margin-bottom:.5rem;letter-spacing:.03em}
+.product p{font-size:.9rem;color:#666;line-height:1.7}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc{padding:2rem;border:1px solid rgba(0,0,0,.05);border-radius:8px;text-align:center;transition:border-color .3s}
+.svc:hover{border-color:var(--gold)}
+.svc .icon{font-size:1.5rem;margin-bottom:.6rem}
+.svc h3{font-size:1rem;margin-bottom:.4rem}
+.svc p{font-size:.85rem;color:#777;line-height:1.6}
+
+/* RETREATS */
+.retreats-bg{position:relative;background:url('https://static.showit.co/800/fRyRSIEZ0Jx9g24YN_oIjA/321008/mysticbella_beautiful_hawaii_sunrise_over_the_sea_nikon_85mm_c4f561bf-0da9-4fe3-93ee-774000328b46_0.png') center/cover no-repeat fixed}
+.retreats-inner{background:rgba(253,251,247,.93);padding:5rem 2rem}
+.retreat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:950px;margin:2.5rem auto 0}
+.rcard{padding:2.5rem 2rem;background:rgba(255,255,255,.85);border-radius:8px;text-align:center;border:1px solid rgba(201,168,76,.15);transition:transform .3s}
+.rcard:hover{transform:translateY(-4px)}
+.rcard h3{font-size:1.2rem;margin-bottom:.3rem}
+.rcard .price{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:.8rem}
+.rcard p{font-size:.85rem;color:#666;line-height:1.7;margin-bottom:1.2rem}
+.btn{display:inline-block;padding:.6rem 1.8rem;background:var(--ocean);color:#fff;border-radius:20px;font-size:.8rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .3s}
+.btn:hover{background:var(--gold)}
+
+/* SEASONS */
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.season{padding:2rem 1.5rem;border-radius:8px;text-align:center}
+.season.spring{background:#f0f7f0;border:1px solid #d4e8d4}
+.season.summer{background:#fdf6e8;border:1px solid #f0e4c0}
+.season.fall{background:#faf0ee;border:1px solid #e8d4d0}
+.season.winter{background:#eef3f8;border:1px solid #c8d8e8}
+.season h3{font-size:1.3rem;margin-bottom:.5rem}
+.season p{font-size:.85rem;color:#666;line-height:1.6}
+
+/* SECTION HEADERS */
+.sh{text-align:center;margin-bottom:3rem}
+.sh h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:.4rem}
+.sh p{font-size:.95rem;color:#888}
+
+/* FOOTER */
+footer{padding:60px 20px;background-color:#fdfbf7;border-top:1px solid #eae7e2}
+footer .fc{max-width:1200px;margin:0 auto;text-align:center}
+footer .fc h2{font-family:'Times New Roman',Times,serif;font-size:16px;letter-spacing:4px;text-transform:uppercase;color:#1a1918;margin-bottom:8px;font-weight:400}
+footer .fc>p:first-of-type{font-family:'Times New Roman',Times,serif;font-size:12px;font-style:italic;color:#76716d;margin-bottom:40px}
+footer .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;text-align:left;margin-bottom:40px;border-bottom:1px solid #eae7e2;padding-bottom:40px}
+footer .grid3 h3{font-family:'Times New Roman',Times,serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#3d3a38;margin-bottom:12px}
+footer .grid3 .desc{font-size:11px;color:#76716d;line-height:1.6;margin-bottom:12px}
+footer .grid3 ul{list-style:none;padding:0}
+footer .grid3 li{margin-bottom:.3rem}
+footer .grid3 a{color:#4a4643;text-decoration:none;font-size:12px;line-height:2}
+footer .grid3 a:hover{color:#1a1918}
+footer .copy{font-size:11px;color:#a39e99;letter-spacing:1px}
+
 @media(max-width:768px){
-  nav .nav-links{display:none}
-  .about{grid-template-columns:1fr;gap:2rem}
-  .pillars{grid-template-columns:1fr}
-  .hero-content h1{font-size:2.8rem}
-  .about-img::after{display:none}
+  nav .links{display:none}
+  .about,.book{grid-template-columns:1fr;gap:2rem}
+  .pillars,.products-grid,.retreat-cards,.services-grid,.seasons{grid-template-columns:1fr}
+  .seasons{grid-template-columns:1fr 1fr}
+  .retreat-cards{max-width:100%}
 }
 </style>
 </head>
@@ -123,229 +132,164 @@ footer{background:var(--ocean);color:rgba(255,255,255,.85);padding:4rem 2rem 2re
 
 <nav id="nav">
   <div class="logo">Pure Wellness Joy</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#philosophy">Living Love</a></li>
-    <li><a href="#book">Divine Spark</a></li>
-    <li><a href="#store">Store</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#retreats">Retreats</a></li>
-  </ul>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#philosophy">Living Love</a>
+    <a href="#book">Divine Spark</a>
+    <a href="#store">Store</a>
+    <a href="#services">Services</a>
+    <a href="#retreats">Retreats</a>
+    <a href="https://wellmadefoundation.org">Foundation</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Pure Wellness Joy<span>Bringing Wellness Home</span></h1>
-    <p class="hero-quote">"The intersection of science, soul, and service."</p>
+    <h1>Pure Wellness Joy</h1>
+    <p class="tagline">"The intersection of science, soul, and service."</p>
+    <p class="sub">Bringing Wellness Home</p>
   </div>
-  <div class="scroll-indicator"><span></span></div>
 </section>
 
 <!-- ABOUT -->
-<section class="section section-alt" id="about">
+<section class="section" id="about">
   <div class="container">
-    <div class="about fade-in">
+    <div class="about">
       <div class="about-img">
         <img src="https://static.showit.co/800/V_-nLdzTuqCWEusiKU4HTw/321008/498945684_10165404591055744_7417844663896287369_n.jpg" alt="Dr. Jasmine">
       </div>
       <div class="about-text">
-        <h2>Dr. Jasmine</h2>
-        <p class="subtitle">Author · Speaker · Teacher · Healer</p>
+        <h2>Dr. Jasmine Therese Esguerra</h2>
+        <p class="role">Author · Speaker · Teacher · Healer</p>
         <p>I am Dr. Jasmine, an author, speaker, teacher, and healer dedicated to redefining what it means to live well.</p>
         <p>Healing comes from connection to our divinity… then life is in flow and unfolds with ease and courage. Each season has its gifts.</p>
-        <p>Our spirit desires to be fully embodied while our body desires to be inspired.</p>
-        <p>Based in Maui, Hawai'i, Dr. Jasmine weaves together chiropractic medicine, feng shui, vibrational healing, and ancestral wisdom to guide families toward wholeness.</p>
-        <div class="mrs-maui">🌺 Mrs. Maui Filipina 2025</div>
+        <p>Based in Maui, Hawai'i — weaving together chiropractic medicine, feng shui, vibrational healing, and ancestral wisdom to guide families toward wholeness.</p>
+        <span class="badge">🌺 Mrs. Maui Filipina 2025</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MRS MAUI STRIP -->
-<div class="image-strip" style="height:50vh;min-height:400px;position:relative">
-  <img src="https://static.showit.co/800/C_MpN7LsADeGxKKJOUgGhA/321008/f6946f62-aeb8-46d9-89dc-5f8699358f0a.jpg" alt="Mrs. Maui Filipina 2025" style="object-position:center top">
-  <div class="overlay-text" style="background:linear-gradient(to right,rgba(45,74,62,.7),rgba(45,74,62,.3),transparent)">
-    <div style="color:#fff;max-width:500px">
-      <h2 style="color:var(--gold-light);font-size:2.5rem;margin-bottom:1rem">Living Love</h2>
-      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;line-height:1.7">Living love is a courageous and joy filled life of inspiration and contribution.</p>
-    </div>
-  </div>
-</div>
-
 <!-- LIVING LOVE PHILOSOPHY -->
-<section class="philosophy-section" id="philosophy">
-  <div class="philosophy-overlay">
-    <div class="philosophy-text fade-in">
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-bg"></div>
+  <div class="philosophy-inner">
+    <div class="philosophy-content">
       <h2>The Living Love Philosophy</h2>
-      <p class="tagline">"Living LOVE is the healing technique I've developed from understanding and working with our vibrational being."</p>
-      <p>At the heart of Pure Wellness Joy is a sacred methodology — a bridge between ancient Filipino healing traditions and modern vibrational science. Two pillars uphold this work:</p>
+      <p>"Living LOVE is the healing technique I've developed from understanding and working with our vibrational being. Our spirit desires to be fully embodied while our body desires to be inspired."</p>
       <div class="pillars">
         <div class="pillar">
           <h3>Sampaguita</h3>
-          <div class="meaning">The Feminine Principle</div>
-          <p>Like the jasmine flower — delicate yet enduring — the feminine principle embodies receptivity, intuition, and the sacred art of allowing healing to flow through surrender and grace.</p>
+          <div class="label">The Feminine Principle</div>
+          <p>Like the jasmine flower — delicate yet enduring — embodying receptivity, intuition, and the sacred art of allowing healing to flow through surrender and grace.</p>
         </div>
         <div class="pillar">
           <h3>Bayani</h3>
-          <div class="meaning">The Masculine Principle</div>
-          <p>Drawn from the Filipino spirit of communal courage — bayanihan — the masculine principle embodies protector energy, purposeful action, and the strength that comes from serving something greater.</p>
+          <div class="label">The Masculine Principle</div>
+          <p>Drawn from the Filipino spirit of communal courage — bayanihan — protector energy, purposeful action, and the strength that comes from serving something greater.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DIVINE SPARK BOOK -->
-<section class="book-section" id="book">
-  <div class="book-overlay">
-    <div class="book-content fade-in">
-      <h2>Divine Spark</h2>
-      <p class="book-tagline">"Every Family Carries a Spark of Healing"</p>
-      <p>A forthcoming book that reveals how every family lineage carries a divine spark — a unique frequency of healing waiting to be remembered, activated, and lived. Dr. Jasmine weaves personal memoir, ancestral wisdom, and practical vibrational tools into a guide for families ready to reclaim their wholeness.</p>
-      <div class="book-excerpt">
-        "When we heal, we don't heal alone. The ripples move backward through our lineage and forward through our children. This is not metaphor — it is vibrational truth. Every family carries a spark. Your job is not to create it, but to remember it."
+<!-- DIVINE SPARK -->
+<section class="section" id="book" style="background:var(--warm)">
+  <div class="container">
+    <div class="book">
+      <div class="book-img">
+        <img src="https://static.showit.co/800/rSex-xFxuxhO3zet5FKLzw/321008/mysticbella_family_joining_hands_walking_together_on_the_maui_0650bc4c-cfbc-4c2d-9c36-23c8347c932b_2.png" alt="Family">
       </div>
-      <a href="#" class="coming-soon">Coming Soon — Join the Waitlist</a>
+      <div class="book-text">
+        <h2>Divine Spark</h2>
+        <p class="book-tag">"Every Family Carries a Spark of Healing"</p>
+        <p>A forthcoming book revealing how every family lineage carries a divine spark — a unique frequency of healing waiting to be remembered, activated, and lived.</p>
+        <div class="book-excerpt">"When we heal, we don't heal alone. The ripples move backward through our lineage and forward through our children. Every family carries a spark. Your job is not to create it, but to remember it."</div>
+        <a href="#" class="btn">Join the Waitlist</a>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- HEALING IMAGE STRIP -->
-<div class="image-strip">
-  <img src="https://static.showit.co/800/FZCnIZ5KnbrDeVYo43rLYg/321008/mysticbella_close_up_of_hands_over_someones_heart_light_pouri_91e5e347-da1c-4869-8817-b688578de0db_3.png" alt="Healing hands over heart">
-</div>
 
 <!-- STORE -->
 <section class="section" id="store">
   <div class="container">
-    <div class="section-header fade-in">
-      <h2>The Store</h2>
-      <p>Curated tools, teachings, and treasures for your healing journey</p>
-    </div>
-    <div class="store-grid">
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/zO85CWRUPm5b8e-xLufKug/321008/mysticbella_beautiful_hawaii_jasmine_flowers_just_past_sunset_421bd657-2b0a-4123-bab8-9973b481765e_3.png" alt="Divine Spark Oracle Deck"></div>
-        <div class="product-body">
-          <h3>Divine Spark Oracle Deck</h3>
-          <p>A 44-card oracle deck channeling ancestral wisdom, jasmine flower energy, and the Living Love philosophy. Each card carries a vibrational frequency to guide your daily practice.</p>
-          <div class="product-price">$44</div>
-        </div>
+    <div class="sh"><h2>The Store</h2><p>Curated ritual tools for your healing journey</p></div>
+    <div class="products-grid">
+      <div class="product">
+        <h3>Pikake Sampaguita Jasmine Line</h3>
+        <div class="composition">Organic candle wax · Pure jasmine botanical oils</div>
+        <p>Establishes courage, spatial safety, and pristine environmental purity in the living room.</p>
       </div>
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/uoR-aXVK4LMJr5uUQ0Ja5Q/321008/mysticbella_stock_photograph_for_how_emotional_healing_restor_933303ed-89c0-460b-b0ae-78e0e8c3b36e_0.png" alt="Living Love Essential Oil Blend"></div>
-        <div class="product-body">
-          <h3>Living Love Essential Oil Blend</h3>
-          <p>Handcrafted in Maui with jasmine, pikake, and sandalwood. This sacred anointing oil carries the frequency of Living Love — use it in meditation, healing sessions, or daily ritual.</p>
-          <div class="product-price">$55</div>
-        </div>
+      <div class="product">
+        <h3>Lokelani Heavenly Rose Line</h3>
+        <div class="composition">Cottage rose · Velvet sandalwood extract</div>
+        <p>Deep heart-chakra activation, devotional lineage honor, and ancestral connection work.</p>
       </div>
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/fRyRSIEZ0Jx9g24YN_oIjA/321008/mysticbella_beautiful_hawaii_sunrise_over_the_sea_nikon_85mm_c4f561bf-0da9-4fe3-93ee-774000328b46_0.png" alt="4-Season Wellness Guide"></div>
-        <div class="product-body">
-          <h3>4-Season Wellness Guide</h3>
-          <p>A beautifully designed seasonal guide aligning your family's wellness practices with nature's rhythms. Recipes, rituals, affirmations, and feng shui adjustments for each season.</p>
-          <div class="product-price">$33</div>
-        </div>
+      <div class="product">
+        <h3>The Home Blessing Kit</h3>
+        <div class="composition">Jasmine candle · Raw minerals · Energy-clearing mist · Feng Shui blueprints</div>
+        <p>For spatial resets following relocation, structural shifts, or winter quiet.</p>
       </div>
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/mq46oFBFVR1Tfr56jltk1A/321008/485098983_10165121954000744_8793657932199943556_n.jpg" alt="Sampaguita Journal"></div>
-        <div class="product-body">
-          <h3>Sampaguita Journal</h3>
-          <p>A linen-covered guided journal with prompts for vibrational self-inquiry, ancestral connection, and Living Love reflections. Gilded edges, ribbon bookmark.</p>
-          <div class="product-price">$38</div>
-        </div>
+      <div class="product">
+        <h3>The New Business Launch Kit</h3>
+        <div class="composition">Citrus/jasmine wax blend · Organic linen desk wraps · Vision-mapping journals</div>
+        <p>Structural organization, grounding professional visions, and fostering wealth abundance.</p>
       </div>
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/N0yzYqAaYvu31ErFtlLn_g/321008/517953063_10165720430890744_2291706329923788505_n.jpg" alt="Bloom Circle Family Kit"></div>
-        <div class="product-body">
-          <h3>Bloom Circle Family Kit</h3>
-          <p>Everything your household needs to begin the Bloom Circle practice: conversation cards, family altar guide, blessing salt, and the Household Registry workbook.</p>
-          <div class="product-price">$88</div>
-        </div>
+      <div class="product">
+        <h3>The Pillar of Honor (Bayani) Kit</h3>
+        <div class="composition">Cedarwood & jasmine essences · Raw leather legacy journal · Dialogue cards</div>
+        <p>For fathers, sons, and uncles to cultivate relationship transparency and protective honor.</p>
       </div>
-      <div class="product-card fade-in">
-        <div class="product-img"><img src="https://static.showit.co/800/C_MpN7LsADeGxKKJOUgGhA/321008/f6946f62-aeb8-46d9-89dc-5f8699358f0a.jpg" alt="Living Love Foundations Course"></div>
-        <div class="product-body">
-          <h3>Digital Course: Living Love Foundations</h3>
-          <p>A self-paced 6-module journey through Dr. Jasmine's core teachings. Video lessons, guided meditations, and vibrational practices you can begin today from anywhere in the world.</p>
-          <div class="product-price">$222</div>
-        </div>
+      <div class="product">
+        <h3>The Lokelani Grace Transition Kit</h3>
+        <div class="composition">Unscented organic beeswax prayer candles · Hand-woven bedside comfort wraps</div>
+        <p>Pristine vibrational care and dignity for those navigating end-of-life or hospice pathing.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section section-alt" id="services">
+<section class="section" id="services" style="background:var(--warm)">
   <div class="container">
-    <div class="section-header fade-in">
-      <h2>The School &amp; Services</h2>
-      <p>Deepen your practice through training, consultations, and community</p>
-    </div>
+    <div class="sh"><h2>The School & Services</h2><p>Training, consultations, and community</p></div>
     <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="service-icon">📖</div>
-        <h3>Divine Spark Methodology Training</h3>
-        <p>Learn the foundational framework for identifying, activating, and stewarding your family's divine spark. Available as live cohorts and self-paced study.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">💞</div>
-        <h3>Living Love Practitioner Training</h3>
-        <p>A certification pathway for healers, coaches, and wellness practitioners called to integrate the Living Love technique into their professional practice.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🦋</div>
-        <h3>Chiropractic Consultations</h3>
-        <p>Dr. Jasmine offers personalized chiropractic care rooted in energetic awareness, serving the whole person — body, spirit, and nervous system.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🏯</div>
-        <h3>Feng Shui Consultations</h3>
-        <p>Harmonize your home and workspace using classical feng shui principles infused with vibrational healing wisdom. In-person (Maui) and virtual available.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🌸</div>
-        <h3>Bloom Circle Household Registry</h3>
-        <p>Register your household in the Bloom Circle — a global network of families committed to living love. Receive seasonal guidance, community support, and sacred tools.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🎙</div>
-        <h3>Speaking &amp; Workshops</h3>
-        <p>Book Dr. Jasmine for keynotes, retreats, and immersive workshops. Topics include vibrational healing, family wellness, and the Living Love methodology.</p>
-      </div>
+      <div class="svc"><div class="icon">📖</div><h3>Divine Spark Methodology</h3><p>Foundational framework for identifying and stewarding your family's divine spark.</p></div>
+      <div class="svc"><div class="icon">💞</div><h3>Living Love Certification</h3><p>For healers and practitioners called to integrate Living Love into their practice.</p></div>
+      <div class="svc"><div class="icon">🦋</div><h3>Chiropractic Care</h3><p>Personalized care rooted in energetic awareness — body, spirit, and nervous system.</p></div>
+      <div class="svc"><div class="icon">🏯</div><h3>Feng Shui Consultations</h3><p>Harmonize home and workspace with classical feng shui and vibrational wisdom.</p></div>
+      <div class="svc"><div class="icon">🌸</div><h3>Bloom Circle Registry</h3><p>Global network of families committed to living love. Seasonal guidance and sacred tools.</p></div>
+      <div class="svc"><div class="icon">🎙</div><h3>Speaking & Workshops</h3><p>Keynotes, retreats, and immersions on vibrational healing and family wellness.</p></div>
     </div>
   </div>
 </section>
 
 <!-- RETREATS -->
-<section class="retreats" id="retreats">
-  <div class="retreats-overlay">
+<section class="retreats-bg" id="retreats">
+  <div class="retreats-inner">
     <div class="container">
-      <div class="section-header fade-in">
-        <h2>Premium Ascension</h2>
-        <p>For those ready to go deeper — intimate, transformative experiences on Maui and beyond</p>
-      </div>
+      <div class="sh"><h2>Premium Ascension</h2><p>Intimate, transformative experiences on Maui and beyond</p></div>
       <div class="retreat-cards">
-        <div class="retreat-card fade-in">
+        <div class="rcard">
           <h3>Living Love Intensive</h3>
           <div class="price">$10,000</div>
-          <p>A private 3-day immersive on Maui. Personalized healing sessions, ancestral clearing, vibrational alignment, and a custom wellness plan for your entire family lineage.</p>
-          <a href="#" class="apply-btn">Apply Now</a>
+          <p>Private 3-day immersive on Maui. Personalized healing, ancestral clearing, and a custom wellness plan for your family lineage.</p>
+          <a href="#" class="btn">Apply</a>
         </div>
-        <div class="retreat-card fade-in">
+        <div class="rcard">
           <h3>Practitioner Certification</h3>
           <div class="price">$25,000</div>
-          <p>A 6-month certification journey combining in-person retreats, mentorship, case studies, and initiation into the Living Love methodology. For called healers only.</p>
-          <a href="#" class="apply-btn">Apply Now</a>
+          <p>6-month certification combining retreats, mentorship, and initiation into the Living Love methodology. For called healers only.</p>
+          <a href="#" class="btn">Apply</a>
         </div>
-        <div class="retreat-card fade-in">
-          <h3>Maui Sacred Retreats</h3>
+        <div class="rcard">
+          <h3>Sacred Maui Retreats</h3>
           <div class="price">By Invitation</div>
-          <p>Seasonal gatherings on sacred Maui land. Ceremonies, ocean healing, community feasting, and immersion in the frequencies of the island. Limited to 12 participants.</p>
-          <a href="#" class="apply-btn">Request Invitation</a>
+          <p>Seasonal gatherings on sacred land. Ceremonies, ocean healing, community feasting. Limited to 12 participants.</p>
+          <a href="#" class="btn">Request</a>
         </div>
       </div>
     </div>
@@ -355,75 +299,32 @@ footer{background:var(--ocean);color:rgba(255,255,255,.85);padding:4rem 2rem 2re
 <!-- 4-SEASON CALENDAR -->
 <section class="section" id="calendar">
   <div class="container">
-    <div class="section-header fade-in">
-      <h2>The 4-Season Calendar</h2>
-      <p>Programming that flows with nature's wisdom — each season brings its own gifts</p>
-    </div>
-    <div class="calendar-grid">
-      <div class="season spring fade-in">
-        <h3>🌸 Spring</h3>
-        <p><strong>Awakening</strong> — New beginnings, planting intentions, cleansing rituals, and family visioning workshops. The season of emergence.</p>
-      </div>
-      <div class="season summer fade-in">
-        <h3>☀️ Summer</h3>
-        <p><strong>Blooming</strong> — Full expression, community gatherings, outdoor ceremonies, Living Love intensives, and celebration of growth.</p>
-      </div>
-      <div class="season autumn fade-in">
-        <h3>🍂 Autumn</h3>
-        <p><strong>Harvesting</strong> — Gratitude practices, ancestral honoring, release ceremonies, and integration of the year's wisdom into family systems.</p>
-      </div>
-      <div class="season winter fade-in">
-        <h3>❄️ Winter</h3>
-        <p><strong>Resting</strong> — Deep restoration, silent retreats, inner work, and preparation for the next cycle of growth and service.</p>
-      </div>
+    <div class="sh"><h2>The 4-Season Calendar</h2><p>Programming that flows with nature's wisdom</p></div>
+    <div class="seasons">
+      <div class="season spring"><h3>🌸 Spring</h3><p><strong>Awakening</strong> — New beginnings, cleansing rituals, family visioning workshops, Home Blessing Kit.</p></div>
+      <div class="season summer"><h3>☀️ Summer</h3><p><strong>Blooming</strong> — Community gatherings, Blush Circles, Mabuhay Monday Awards, Living Love intensives.</p></div>
+      <div class="season fall"><h3>🍂 Autumn</h3><p><strong>Harvesting</strong> — Gratitude practices, Renaissance Showcase, Business Launch Kit, ancestral honoring.</p></div>
+      <div class="season winter"><h3>❄️ Winter</h3><p><strong>Resting</strong> — Candle-Lit Labyrinth, Silent Retreat, Sovereign Couples Retreat, deep restoration.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER — exact spec -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Pure Wellness Joy</h4>
-      <p>Bringing Wellness Home</p>
-      <a href="#store">The Store</a>
-      <a href="#services">School &amp; Services</a>
-      <a href="#calendar">4-Season Calendar</a>
-      <a href="#retreats">Premium Ascension</a>
-    </div>
-    <div class="footer-col">
-      <h4>Well Made Foundation</h4>
-      <p>Philanthropic arm of the Pure Wellness Joy ecosystem</p>
-      <a href="#">Our Mission</a>
-      <a href="#">Community Programs</a>
-      <a href="#">Get Involved</a>
-      <a href="#">Donate</a>
-    </div>
-    <div class="footer-col">
-      <h4>Dr. Jasmine</h4>
-      <p>Author · Speaker · Teacher · Healer</p>
-      <a href="#">About Dr. Jasmine</a>
-      <a href="#">Book Speaking</a>
-      <a href="#">Media Kit</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2025 Pure Wellness Joy. All rights reserved. Made with 🤍 in Maui, Hawai'i</p>
-  </div>
+<div class="fc">
+<h2>The Living Love Collective</h2>
+<p style="font-family:'Times New Roman',Times,serif;font-size:12px;font-style:italic;color:#76716d;margin-bottom:40px">An editorial ecosystem of pure living, whole-family generational care, and conscious leadership.</p>
+<div class="grid3">
+<div><h3>PURE WELLNESS JOY</h3><p class="desc">The Commercial Engine & Health Sanctuary</p><ul><li><a href="#store">Shop The Lifestyle Store</a></li><li><a href="#services">Join The Bloom Circle Registry</a></li><li><a href="#store">Explore Milestone & Ritual Kits</a></li></ul></div>
+<div><h3>WELL MADE FOUNDATION</h3><p class="desc">The Global Impact & Legacy Core</p><ul><li><a href="https://wellmadefoundation.org">Donate: $30 Lifetime Family Entry</a></li><li><a href="https://wellmadefoundation.org">The Sovereign Syndicate</a></li><li><a href="https://wellmadefoundation.org">The Sampaguita Promise</a></li></ul></div>
+<div><h3>DR. JASMINE</h3><p class="desc">The Sovereign Guide & Professional Authority</p><ul><li><a href="#about">Clinical Somatics & Chiropractic</a></li><li><a href="#philosophy">Divine Spark Methodology</a></li><li><a href="#retreats">Living Love Certifications</a></li></ul></div>
+</div>
+<p class="copy">© 2026 The Living Love Collective. Founded and guided with complete devotion by Dr. Jasmine Therese Esguerra.</p>
+</div>
 </footer>
 
 <script>
-// Scroll nav
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)
-})
-
-// Fade in on scroll
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
-},{threshold:0.15})
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el))
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
 </script>
 </body>
 </html>
