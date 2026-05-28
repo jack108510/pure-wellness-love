@@ -317,8 +317,8 @@ section{padding:6rem 2rem}
       <div class="about-text">
         <h2>About Dr. Jasmine</h2>
         <p class="subtitle">Mrs. Maui · Author · Founder of The Living Love Collective</p>
-        <p>Dr. Jasmine Therese Esguerra is a Hawaiian-based healer, author, and spiritual guide whose work bridges ancestral Filipino wisdom with modern wellness practice. As Mrs. Maui, she embodies the spirit of aloha — love, compassion, and deep connection to land and community.</p>
-        <p>Through her Living Love philosophy, she has guided thousands toward sacred embodiment, environmental purity, and generational healing. Her Sampaguita and Bayani pillars form the foundation of a practice that honors both the divine feminine and the courage of community.</p>
+        <p>Dr. Jasmine Therese Esguerra is a Maui-based healer, author, and spiritual guide. As Mrs. Maui Filipina 2025, she embodies the spirit of aloha — love, compassion, and deep connection to land and community.</p>
+        <p>Through her Living Love philosophy, she guides individuals and families toward sacred embodiment, environmental purity, and generational healing. Her Sampaguita and Bayani pillars form the foundation of a practice that honors both the divine feminine and the courage of community.</p>
         <p>Her book <em>Divine Spark</em> and her curated product lines bring the essence of Hawaiian botanicals and Filipino sacred traditions into homes around the world.</p>
         <br>
         <button class="btn-primary" onclick="openConsultation()">Book a Consultation</button>
@@ -373,7 +373,7 @@ section{padding:6rem 2rem}
   <div class="mrs-maui-bg"></div>
   <div class="section-container" style="text-align:center">
     <h2 class="section-title">Mrs. Maui</h2>
-    <p class="section-subtitle">A title earned through service, love, and devotion to the people and lands of Maui. Dr. Jasmine carries this honor as a sacred responsibility — to be a beacon of aloha for her community and the world.</p>
+    <p class="section-subtitle">Dr. Jasmine was honored as Mrs. Maui Filipina 2025, carrying this title as a sacred responsibility to be a beacon of aloha for her community and the world.</p>
   </div>
 </section>
 
@@ -404,20 +404,20 @@ section{padding:6rem 2rem}
       <div class="tier-card">
         <h3>Living Love Immersion</h3>
         <div class="price">Apply for Details</div>
-        <p>A six-month sacred journey through the Sampaguita and Bayani pillars. Private sessions with Dr. Jasmine, custom botanical rituals, and ancestral healing ceremonies.</p>
+        <p>An immersive journey through the Sampaguita and Bayani pillars. Private sessions with Dr. Jasmine, custom botanical rituals, and ancestral healing ceremonies.</p>
         <button class="btn-apply" onclick="openApplication('Living Love Immersion')">Apply</button>
       </div>
       <div class="tier-card featured">
         <h3>Living Love Certification</h3>
         <div class="price">Apply for Details</div>
-        <p>Full practitioner certification in the Living Love methodology. Twelve months of intensive training, mentorship, and supervised practice. Graduate as a certified Living Love guide.</p>
+        <p>Full practitioner certification in the Living Love methodology. Intensive training, mentorship, and supervised practice. Graduate as a certified Living Love guide.</p>
         <button class="btn-apply" onclick="openApplication('Living Love Certification')">Apply</button>
       </div>
       <div class="tier-card">
-        <h3>The Sacred Inner Circle</h3>
+        <h3>Divine Leadership Summits</h3>
         <div class="price">By Invitation</div>
-        <p>An exclusive fellowship for Living Love graduates who demonstrate exceptional devotion. Annual retreats, private gatherings, and direct lineage transmission with Dr. Jasmine.</p>
-        <button class="btn-apply" onclick="openApplication('The Sacred Inner Circle — By Invitation')">Request Invitation</button>
+        <p>Annual retreats and private gatherings for Living Love practitioners. Deepen your practice in community with Dr. Jasmine and fellow guides.</p>
+        <button class="btn-apply" onclick="openApplication('Divine Leadership Summits — By Invitation')">Request Invitation</button>
       </div>
     </div>
   </div>
@@ -516,14 +516,14 @@ section{padding:6rem 2rem}
           <label>Service of Interest</label>
           <select id="conService">
             <option value="">Select a service…</option>
-            <option>Living Love Private Session</option>
-            <option>Ancestral Healing Circle</option>
-            <option>Sacred Embodiment Coaching</option>
-            <option>Environmental Blessing Ceremony</option>
-            <option>Couples & Family Healing</option>
-            <option>Corporate Wellness & Leadership</option>
+            <option value="">Select a service…</option>
+            <option>Chiropractic Consultation</option>
+            <option>Feng Shui Consultation</option>
+            <option>Living Love Modality Training</option>
+            <option>Divine Spark Methodology</option>
             <option>Bloom Circle Household Registry</option>
-            <option>Premium Ascension Program</option>
+            <option>Retreat Information</option>
+            <option>Speaking / Workshop Inquiry</option>
             <option>Other / General Inquiry</option>
           </select>
         </div>
@@ -923,10 +923,10 @@ updateCartUI();
 
 // ========== SERVICES ==========
 const services = [
-  {name:'Living Love Private Session',desc:'One-on-one sacred guidance with Dr. Jasmine. Deep healing through the Sampaguita and Bayani pillars, personalized botanical rituals, and ancestral reconnection.',btn:'Book Now',action:"openConsultation()"},
-  {name:'Ancestral Healing Circle',desc:'Group ceremony honoring lineage and releasing generational patterns. Experience the power of communal prayer, botanical blessings, and shared vulnerability.',btn:'Book Now',action:"openConsultation()"},
-  {name:'Sacred Embodiment Coaching',desc:'A 12-week journey integrating body wisdom, environmental harmony, and spiritual practice. For those ready to live the Living Love philosophy fully.',btn:'Book Now',action:"openConsultation()"},
-  {name:'Environmental Blessing Ceremony',desc:'Sacred space clearing and blessing for homes, offices, and land. Feng Shui integration, botanical misting, and mineral placement following Hawaiian and Filipino traditions.',btn:'Book Now',action:"openConsultation()"},
+  {name:'Chiropractic Care',desc:'Personalized chiropractic care rooted in energetic awareness — serving the whole person: body, spirit, and nervous system.',btn:'Book Now',action:"openConsultation()"},
+  {name:'Feng Shui Consultation',desc:'Harmonize your home and workspace using classical feng shui principles infused with vibrational healing wisdom. In-person (Maui) and virtual available.',btn:'Book Now',action:"openConsultation()"},
+  {name:'Living Love Modality Training',desc:'Learn the foundational framework for identifying, activating, and stewarding your family\'s divine spark.',btn:'Book Now',action:"openConsultation()"},
+  {name:'Divine Spark Methodology',desc:'Sacred education and transformative guidance through the Living Love methodology.',btn:'Book Now',action:"openConsultation()"},
   {name:'Couples & Family Healing',desc:'Restore harmony and deepen connection through guided dialogue, shared rituals, and the Bayani spirit of mutual honor and service.',btn:'Book Now',action:"openConsultation()"},
   {name:'Bloom Circle Household Registry',desc:'Register your household\'s sacred dates — birthdays, anniversaries, memorials, and milestones. Your family is held in ongoing prayer and celebration by our circle.',btn:'Join the Bloom Circle',action:"openBloomCircle()",isJoin:true}
 ];
