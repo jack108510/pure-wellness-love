@@ -41,7 +41,7 @@ input:focus,textarea:focus,select:focus{outline:2px solid var(--gold);border-col
 .mobile-overlay.open{opacity:1;pointer-events:all}
 
 /* CART ICON */
-.cart-icon{position:fixed;top:1.2rem;right:5rem;z-index:1001;cursor:pointer;display:flex;align-items:center;gap:0.3rem;color:var(--white);transition:color 0.3s}
+.cart-icon{position:fixed;top:1.2rem;right:6rem;z-index:1001;cursor:pointer;display:flex;align-items:center;gap:0.3rem;color:var(--white);transition:color 0.3s}
 .nav.scrolled~.cart-icon,.cart-icon.scrolled{color:var(--ocean)}
 .cart-icon svg{width:24px;height:24px;fill:currentColor}
 .cart-badge{background:var(--gold);color:var(--white);font-size:0.7rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-8px;right:-8px}
@@ -228,7 +228,7 @@ section{padding:6rem 2rem}
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
-  .cart-icon{right:4rem;top:1rem}
+  .cart-icon{right:5rem;top:1rem}
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .about-img img{height:350px}
   .pillars{grid-template-columns:1fr}
@@ -468,50 +468,181 @@ section{padding:6rem 2rem}
 
 <!-- CONSULTATION MODAL -->
 <div class="modal-overlay" id="consultModal">
-  <div class="modal">
+  <div class="modal" style="max-width:560px">
     <span class="modal-close" onclick="closeModal('consultModal')">&times;</span>
     <h2>Book a Consultation</h2>
-    <p class="modal-sub">Begin your sacred journey with Dr. Jasmine</p>
-    <form onsubmit="return submitConsultation(event)">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" id="conName" required>
+    <p class="modal-sub">Select an available date and time</p>
+
+    <!-- CALENDAR -->
+    <div id="bookingCal" style="margin-bottom:1.5rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <button type="button" onclick="calNav(-1)" style="font-size:1.2rem;color:var(--ocean);background:none;border:none;cursor:pointer;padding:0.5rem">‹</button>
+        <strong id="calTitle" style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ocean)"></strong>
+        <button type="button" onclick="calNav(1)" style="font-size:1.2rem;color:var(--ocean);background:none;border:none;cursor:pointer;padding:0.5rem">›</button>
       </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="conEmail" required>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;margin-bottom:0.5rem">
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Su</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Mo</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Tu</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">We</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Th</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Fr</span>
+        <span style="font-size:0.7rem;color:#999;font-weight:600">Sa</span>
       </div>
-      <div class="form-group">
-        <label>Phone</label>
-        <input type="tel" id="conPhone">
-      </div>
-      <div class="form-group">
-        <label>Service of Interest</label>
-        <select id="conService">
-          <option value="">Select a service…</option>
-          <option>Living Love Private Session</option>
-          <option>Ancestral Healing Circle</option>
-          <option>Sacred Embodiment Coaching</option>
-          <option>Environmental Blessing Ceremony</option>
-          <option>Couples & Family Healing</option>
-          <option>Corporate Wellness & Leadership</option>
-          <option>Bloom Circle Household Registry</option>
-          <option>Premium Ascension Program</option>
-          <option>Other / General Inquiry</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea id="conMessage" rows="3" placeholder="Tell us what you're seeking…"></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Send Consultation Request</button>
-    </form>
+      <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center"></div>
+    </div>
+
+    <!-- TIME SLOTS (shown after date selected) -->
+    <div id="timeSlots" style="display:none;margin-bottom:1.5rem">
+      <label style="font-size:0.85rem;font-weight:500;display:block;margin-bottom:0.5rem">Available times for <span id="selectedDateText"></span></label>
+      <div id="slotGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem"></div>
+    </div>
+
+    <!-- CONTACT FORM (shown after slot selected) -->
+    <div id="bookingForm" style="display:none">
+      <form onsubmit="return submitConsultation(event)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="conName" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="conEmail" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="conPhone">
+        </div>
+        <div class="form-group">
+          <label>Service of Interest</label>
+          <select id="conService">
+            <option value="">Select a service…</option>
+            <option>Living Love Private Session</option>
+            <option>Ancestral Healing Circle</option>
+            <option>Sacred Embodiment Coaching</option>
+            <option>Environmental Blessing Ceremony</option>
+            <option>Couples & Family Healing</option>
+            <option>Corporate Wellness & Leadership</option>
+            <option>Bloom Circle Household Registry</option>
+            <option>Premium Ascension Program</option>
+            <option>Other / General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="conMessage" rows="2" placeholder="Tell us what you're seeking…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Confirm Booking</button>
+      </form>
+    </div>
     <div class="form-success" id="consultSuccess" style="display:none">
-      <h3>✓ Request Received</h3>
-      <p>Mahalo! We'll be in touch within 48 hours to schedule your consultation.</p>
+      <h3>✓ Booking Confirmed</h3>
+      <p>Mahalo! Your consultation is booked for <strong id="bookedDateTime"></strong>. We'll send a confirmation to your email.</p>
     </div>
   </div>
 </div>
+
+<style>
+.cal-day{font-size:0.85rem;padding:0.4rem;border-radius:4px;cursor:pointer;transition:all 0.15s;color:#333}
+.cal-day:hover:not(.past):not(.empty):not(.booked){background:var(--gold);color:#fff}
+.cal-day.past{color:#ccc;cursor:default}
+.cal-day.empty{cursor:default}
+.cal-day.selected{background:var(--ocean);color:#fff;font-weight:600}
+.cal-day.today{border:2px solid var(--gold)}
+.cal-day.booked{text-decoration:line-through;color:#ccc;cursor:default}
+.slot-btn{padding:0.5rem;border:1px solid #ddd;border-radius:4px;background:#fff;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
+.slot-btn:hover{border-color:var(--gold);background:#fffbf0}
+.slot-btn.selected{background:var(--ocean);color:#fff;border-color:var(--ocean)}
+</style>
+
+<script>
+// BOOKING CALENDAR
+var calMonth, calYear, selectedDate=null, selectedSlot=null;
+(function(){
+  var now=new Date();
+  calMonth=now.getMonth();
+  calYear=now.getFullYear();
+  renderCal();
+})();
+
+function renderCal(){
+  var grid=document.getElementById('calGrid');
+  var title=document.getElementById('calTitle');
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  title.textContent=months[calMonth]+' '+calYear;
+  grid.innerHTML='';
+  var first=new Date(calYear,calMonth,1);
+  var days=new Date(calYear,calMonth+1,0).getDate();
+  var today=new Date();today.setHours(0,0,0,0);
+  for(var i=0;i<first.getDay();i++){
+    var e=document.createElement('span');e.className='cal-day empty';grid.appendChild(e);
+  }
+  for(var d=1;d<=days;d++){
+    var cell=new Date(calYear,calMonth,d);cell.setHours(0,0,0,0);
+    var sp=document.createElement('span');sp.className='cal-day';sp.textContent=d;
+    // Booked dates (random Tues/Thurs to simulate)
+    var isBooked=(cell.getDay()===2||cell.getDay()===4)&&d%3===0;
+    if(cell<today)sp.classList.add('past');
+    else if(isBooked)sp.classList.add('booked');
+    else{
+      if(cell.getTime()===today.getTime())sp.classList.add('today');
+      if(selectedDate&&cell.toDateString()===selectedDate.toDateString())sp.classList.add('selected');
+      sp.onclick=(function(dt){return function(){selectDate(dt)}})(new Date(calYear,calMonth,d));
+    }
+    grid.appendChild(sp);
+  }
+}
+
+function calNav(dir){
+  calMonth+=dir;
+  if(calMonth>11){calMonth=0;calYear++}
+  if(calMonth<0){calMonth=11;calYear--}
+  renderCal();
+}
+
+function selectDate(dt){
+  selectedDate=dt;selectedSlot=null;
+  renderCal();
+  document.getElementById('selectedDateText').textContent=dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  // Generate time slots 9am-5pm
+  var sg=document.getElementById('slotGrid');sg.innerHTML='';
+  var slots=['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM'];
+  // Remove some slots randomly to simulate availability
+  var available=slots.filter(function(_,i){return i%3!==2||(dt.getDate()+i)%4!==0});
+  available.forEach(function(s){
+    var b=document.createElement('button');b.type='button';b.className='slot-btn';b.textContent=s;
+    b.onclick=function(){
+      document.querySelectorAll('.slot-btn').forEach(function(x){x.classList.remove('selected')});
+      b.classList.add('selected');selectedSlot=s;
+      document.getElementById('bookingForm').style.display='block';
+    };
+    sg.appendChild(b);
+  });
+  document.getElementById('timeSlots').style.display='block';
+  document.getElementById('bookingForm').style.display='none';
+}
+
+// Override submitConsultation to include date/time
+var origSubmit=window.submitConsultation;
+window.submitConsultation=function(e){
+  e.preventDefault();
+  var dateStr=selectedDate?selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}):'';
+  var timeStr=selectedSlot||'';
+  var name=document.getElementById('conName').value;
+  var email=document.getElementById('conEmail').value;
+  var phone=document.getElementById('conPhone').value||'N/A';
+  var service=document.getElementById('conService').value||'Not specified';
+  var message=document.getElementById('conMessage').value||'No message';
+  var body='Booking Request\n\nDate: '+dateStr+'\nTime: '+timeStr+'\nName: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nService: '+service+'\nMessage: '+message;
+  window.location.href='mailto:wildejack1010@gmail.com?subject=Consultation Booking - '+dateStr+' at '+timeStr+'&body='+encodeURIComponent(body);
+  document.getElementById('bookedDateTime').textContent=dateStr+' at '+timeStr;
+  document.getElementById('bookingForm').style.display='none';
+  document.getElementById('timeSlots').style.display='none';
+  document.getElementById('bookingCal').style.display='none';
+  document.getElementById('consultSuccess').style.display='block';
+  return false;
+};
+</script>
 
 <!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="checkoutModal">
