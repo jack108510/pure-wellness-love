@@ -403,15 +403,15 @@ section{padding:6rem 2rem}
     <div class="tiers">
       <div class="tier-card">
         <h3>Living Love Immersion</h3>
-        <div class="price">$10,000</div>
+        <div class="price">Apply for Details</div>
         <p>A six-month sacred journey through the Sampaguita and Bayani pillars. Private sessions with Dr. Jasmine, custom botanical rituals, and ancestral healing ceremonies.</p>
-        <button class="btn-apply" onclick="openApplication('Living Love Immersion — $10,000')">Apply</button>
+        <button class="btn-apply" onclick="openApplication('Living Love Immersion')">Apply</button>
       </div>
       <div class="tier-card featured">
         <h3>Living Love Certification</h3>
-        <div class="price">$25,000</div>
+        <div class="price">Apply for Details</div>
         <p>Full practitioner certification in the Living Love methodology. Twelve months of intensive training, mentorship, and supervised practice. Graduate as a certified Living Love guide.</p>
-        <button class="btn-apply" onclick="openApplication('Living Love Certification — $25,000')">Apply</button>
+        <button class="btn-apply" onclick="openApplication('Living Love Certification')">Apply</button>
       </div>
       <div class="tier-card">
         <h3>The Sacred Inner Circle</h3>
@@ -843,12 +843,12 @@ updateWaitlistCount();
 
 // ========== PRODUCTS & CART ==========
 const products = [
-  {id:1,name:'Pikake Sampaguita Jasmine Line',price:68,desc:'Organic candle wax infused with pure jasmine botanical oils. Courage, spatial safety, environmental purity. The signature fragrance of Living Love.',tag:'Best Seller'},
-  {id:2,name:'Lokelani Heavenly Rose Line',price:72,desc:'Cottage rose and velvet sandalwood. Heart-chakra activation, ancestral connection, and the rose petal path to divine love.',tag:'Heart Opening'},
-  {id:3,name:'The Home Blessing Kit',price:148,desc:'Jasmine candle, raw minerals, energy-clearing mist, and Feng Shui blueprints. A complete spatial reset for your sacred space.',tag:'Complete Ritual'},
-  {id:4,name:'The New Business Launch Kit',price:128,desc:'Citrus and jasmine wax blend, linen desk wraps, vision journals. Professional vision and wealth abundance for your entrepreneurial journey.',tag:'Abundance'},
-  {id:5,name:'The Pillar of Honor (Bayani) Kit',price:98,desc:'Cedarwood and jasmine, leather legacy journal, dialogue cards. Crafted for fathers, sons, uncles — the men who hold the line.',tag:'For Fathers & Sons'},
-  {id:6,name:'The Lokelani Grace Transition Kit',price:168,desc:'Beeswax prayer candles, hand-woven bedside wraps. End-of-life vibrational care — the gentlest farewell, wrapped in love.',tag:'Sacred Transitions'}
+  {id:1,name:'Pikake Sampaguita Jasmine Line',desc:'Organic candle wax infused with pure jasmine botanical oils. Courage, spatial safety, environmental purity. The signature fragrance of Living Love.',tag:'Best Seller'},
+  {id:2,name:'Lokelani Heavenly Rose Line',desc:'Cottage rose and velvet sandalwood. Heart-chakra activation, ancestral connection, and the rose petal path to divine love.',tag:'Heart Opening'},
+  {id:3,name:'The Home Blessing Kit',desc:'Jasmine candle, raw minerals, energy-clearing mist, and Feng Shui blueprints. A complete spatial reset for your sacred space.',tag:'Complete Ritual'},
+  {id:4,name:'The New Business Launch Kit',desc:'Citrus and jasmine wax blend, linen desk wraps, vision journals. Professional vision and wealth abundance for your entrepreneurial journey.',tag:'Abundance'},
+  {id:5,name:'The Pillar of Honor (Bayani) Kit',desc:'Cedarwood and jasmine, leather legacy journal, dialogue cards. Crafted for fathers, sons, uncles — the men who hold the line.',tag:'For Fathers & Sons'},
+  {id:6,name:'The Lokelani Grace Transition Kit',desc:'Beeswax prayer candles, hand-woven bedside wraps. End-of-life vibrational care — the gentlest farewell, wrapped in love.',tag:'Sacred Transitions'}
 ];
 
 function renderProducts() {
@@ -857,7 +857,7 @@ function renderProducts() {
     <div class="product-card">
       <span style="display:inline-block;background:var(--gold);color:var(--white);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:3px;margin-bottom:1rem;font-weight:600">${p.tag}</span>
       <h3>${p.name}</h3>
-      <div class="product-price">$${p.price}</div>
+      
       <p>${p.desc}</p>
       <button class="btn-add-cart" onclick="addToCart(${p.id})">Add to Collection</button>
     </div>
@@ -891,18 +891,18 @@ function updateCartUI() {
   let sum=0;
   itemsEl.innerHTML=cart.map(ci=>{
     const p=products.find(x=>x.id===ci.id);
-    const sub=p.price*ci.qty;sum+=sub;
-    return `<div class="cart-item"><div class="cart-item-info"><h4>${p.name}</h4><p>$${p.price}</p></div><div class="cart-qty"><button onclick="updateQty(${ci.id},-1)">−</button><span>${ci.qty}</span><button onclick="updateQty(${ci.id},1)">+</button></div><span class="cart-remove" onclick="removeFromCart(${ci.id})">Remove</span></div>`;
+    // price tbd
+    return `<div class="cart-item"><div class="cart-item-info"><h4>${p.name}</h4><p>Price TBA</p></div><div class="cart-qty"><button onclick="updateQty(${ci.id},-1)">−</button><span>${ci.qty}</span><button onclick="updateQty(${ci.id},1)">+</button></div><span class="cart-remove" onclick="removeFromCart(${ci.id})">Remove</span></div>`;
   }).join('');
-  document.getElementById('cartTotal').textContent='$'+sum;
+  document.getElementById('cartTotal').textContent=cart.length+' items';
 }
 function toggleCart() {
   document.getElementById('cartDrawer').classList.toggle('open');
 }
 function openCheckout() {
   if(!cart.length) return;
-  let html=cart.map(ci=>{const p=products.find(x=>x.id===ci.id);return `<div style="display:flex;justify-content:space-between;margin-bottom:0.3rem"><span>${p.name} × ${ci.qty}</span><span>$${p.price*ci.qty}</span></div>`;}).join('');
-  const sum=cart.reduce((s,ci)=>{const p=products.find(x=>x.id===ci.id);return s+p.price*ci.qty;},0);
+  let html=cart.map(ci=>{const p=products.find(x=>x.id===ci.id);return `<div style="display:flex;justify-content:space-between;margin-bottom:0.3rem"><span>${p.name} × ${ci.qty}</span><span>TBA</span></div>`;}).join('');
+  // no price sum
   html+=`<div style="border-top:1px solid #ddd;padding-top:0.5rem;margin-top:0.5rem;display:flex;justify-content:space-between;font-weight:700"><span>Total</span><span>$${sum}</span></div>`;
   document.getElementById('checkoutItems').innerHTML=html;
   toggleCart();
@@ -910,8 +910,8 @@ function openCheckout() {
 }
 function submitCheckout(e) {
   e.preventDefault();
-  const items=cart.map(ci=>{const p=products.find(x=>x.id===ci.id);return `${p.name} × ${ci.qty} = $${p.price*ci.qty}`;}).join('\n');
-  const sum=cart.reduce((s,ci)=>{const p=products.find(x=>x.id===ci.id);return s+p.price*ci.qty;},0);
+  const items=cart.map(ci=>{const p=products.find(x=>x.id===ci.id);return `${p.name} × ${ci.qty}`;}).join('\n');
+  // no price sum
   const body=`Order from Pure Wellness Joy\n\nName: ${coName.value}\nEmail: ${coEmail.value}\nAddress: ${coAddress.value}\nNotes: ${coNotes.value}\n\nItems:\n${items}\n\nTotal: $${sum}`;
   window.location.href=`mailto:wildejack1010@gmail.com?subject=New Order - ${coName.value} - $${sum}&body=${encodeURIComponent(body)}`;
   e.target.style.display='none';
